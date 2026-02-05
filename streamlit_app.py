@@ -18,17 +18,17 @@ st.set_page_config(
 # ==================================================
 @st.cache_data
 def load_data():
-    picker = pd.read_csv(r"C:\Users\avred\Downloads\cleaned_picker_movement.csv")
-    orders = pd.read_csv(r"C:\Users\avred\Downloads\cleaned_order_transactions.csv")
-    warehouse = pd.read_csv(r"C:\Users\avred\Downloads\cleaned_warehouse_constraints.csv")
-    sku = pd.read_csv(r"C:\Users\avred\Downloads\cleaned_sku_master.csv")
-    final_slotting = pd.read_csv(r"C:\Users\avred\Downloads\final_slotting_plan.csv")
+    picker = pd.read_csv("data/cleaned_picker_movement.csv")
+    orders = pd.read_csv("data/cleaned_order_transactions.csv")
+    warehouse = pd.read_csv("data/cleaned_warehouse_constraints.csv")
+    sku = pd.read_csv("data/cleaned_sku_master.csv")
+    final_slotting = pd.read_csv("data/final_slotting_plan.csv")
     return picker, orders, warehouse, sku, final_slotting
 
 picker_movement, orders, warehouse, sku_master, final_slotting = load_data()
 
 orders["order_timestamp"] = pd.to_datetime(orders["order_timestamp"])
-picker_movement["order_timestamp"] = pd.to_datetime(picker_movement["order_timestamp"])
+picker_movement["order_timestamp"] = pd.to_datetime(picker_movement["order_timestamp"]) 
 
 # ==================================================
 # GLOBAL AISLE TRAFFIC (USED EVERYWHERE)
